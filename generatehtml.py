@@ -227,7 +227,7 @@ if __name__ == "__main__":
 
 
     # copy template files
-    copy_folder("resources/css", "test/css")
-    copy_folder("resources/js", "test/js")
+    copy_folder("resources/css", "htdocs/css")
+    copy_folder("resources/js", "htdocs/js")
 
 
