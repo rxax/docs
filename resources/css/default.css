@@ -1,0 +1,88 @@
+* {
+    font-family: 'Lato', sans-serif;
+    padding: 0;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+code {
+    background-color: #efefef;
+    display: inline-block;
+    width: auto;
+}
+
+sidebar a {
+    margin-top: 3px;
+    text-decoration: none;
+}
+
+
+sidebar ul {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    list-style-position: inside;
+    padding-left: 10px;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    color: darkslategrey;
+}
+
+blockquote {
+    background-color: #efefef;
+    margin: 0;
+    padding: 10px;
+    overflow: auto;
+}
+
+blockquote p {
+    margin: 0;
+    padding: 0;
+}
+
+sidebar {
+    background-color: #efefef;
+}
+
+sidebar h3 {
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+sidebar, main {
+    padding: 15px;
+}
+
+.shadowed {
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+    clip-path: inset(0px -15px 0px -15px);
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+header h1 {
+    font-weight: 400;
+}
+
+.background-gradient {
+    background: rgb(0, 0, 8);
+    background: linear-gradient(315deg, rgba(0, 0, 8, 0.16600143475358897) 0%, rgba(102, 102, 102, 0) 100%);
+}
+
+
+label.category {
+    cursor: pointer !important;
+    border-bottom: solid 1px #333;
+    display: block;
+    background-color: #ccc;
+}
+
+sidebar a:active, sidebar a.active {
+    color: #67cdcc !important;
+}
