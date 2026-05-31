@@ -24,12 +24,22 @@
 <div class="shadowed">
     <div class="container-fluid h-100 ml-1 mr-1">
         <header class="border-bottom row background-gradient">
-            <h1>Resources</h1>
+            <h1 class="col-9 float-left"><a href="index.html">Resources</a></h1>
+            <span class="col-3 d-flex align-items-center float-end">
+
+                <form id="search" class="row">
+                    <div class="col-8">
+                        <input id="search_text" class="form-control float-end" type="text"/>
+                    </div>
+                    <div class="col-4">
+                        <button class="button-15 float-end" role="button">Search</button>
+                    </div>
+                </form>
+            </span>
         </header>
         <div class="row justify-content-left h-100">
 
             <sidebar class="col-2 hidden-md-down">
-                <h3>Table of Contents</h3>
                 {sidebar}
             </sidebar>
 
@@ -40,5 +50,7 @@
         </div>
     </div>
 </div>
+
+
 </body>
 </html>

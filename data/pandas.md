@@ -1,5 +1,13 @@
 ## Pandas
 
+Imports:
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+```
+
 Read SQL query result into a dataframe:
 
 ```python
