@@ -2,3 +2,5 @@
 /htdocs_old/
 /.venv/
 /exec.cmd
+/htdocs
+/.idea
