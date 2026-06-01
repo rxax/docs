@@ -8,6 +8,7 @@
 # Install dependency first:
 #   pip install markdown
 import os
+import re
 import shutil
 import sys
 import markdown
@@ -197,6 +198,44 @@ def make_sidebar_html(data: list) -> str:
     soup = BeautifulSoup(html, "html.parser")
     return soup.prettify()
 
+def replace_text_in_file(file_path: str, old_text: str, new_text: str):
+    """
+    Replace a given text in a file
+    """
+    path = Path(file_path)
+
+    # Read file content
+    content = path.read_text(encoding="utf-8")
+
+    # Replace text
+    updated_content = content.replace(old_text, new_text)
+
+    # Write updated content back
+    path.write_text(updated_content, encoding="utf-8")
+
+
+
+def remove_tags_and_content(html: str, tags_to_remove: list[str], strip_remaining_tags:bool = False) -> str:
+    """
+    Remove specified HTML tags and everything inside them.
+
+    Args:
+        html: Input HTML string
+        tags_to_remove: List of tag names to remove completely
+
+    Returns:
+        Cleaned HTML string
+    """
+    soup = BeautifulSoup(html, "html.parser")
+
+    for tag_name in tags_to_remove:
+        for tag in soup.find_all(tag_name):
+            tag.decompose()  # removes tag + all nested content
+
+    if strip_remaining_tags:
+        return str(soup.get_text())
+    else:
+        return str(soup)
 
 if __name__ == "__main__":
     #clear old data
@@ -214,6 +253,8 @@ if __name__ == "__main__":
     sidebar_html = make_sidebar_html(list(markdown_files.keys()))
     #print(sidebar_html)
 
+    search_data = []
+
     # convert each file to html
     for markdown_file_name, markdown_file_content in markdown_files.items():
         html_sniplet = markdown_to_html(markdown_file_content)
@@ -225,9 +266,25 @@ if __name__ == "__main__":
 
         write_to_file('htdocs/'+final_html_file_name, final_html_file_content)
 
+        # write search array for vue search
+        search_data.append({
+            'file':final_html_file_name,
+            'data': remove_tags_and_content(html_sniplet,['pre','code'],True)
+        })
+
+
 
     # copy template files
     copy_folder("resources/css", "htdocs/css")
     copy_folder("resources/js", "htdocs/js")
 
+    # write search data into vuesearch.js
+    replace_text_in_file("htdocs/js/vuesearch.js",old_text='const search_data = []',
+                         new_text="const search_data = "+str(search_data)+';')
+
+
+    # write index file
+    index_content =  html_file.replace('{sidebar}',sidebar_html)
+    index_content = index_content.replace('{body}','')
+    write_to_file('htdocs/index.html', index_content)
 

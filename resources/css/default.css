@@ -92,6 +92,9 @@ header h1 a {
     color: darkslategrey;
 }
 
+#search_results b {
+    display: inline-text;
+}
 
 
 /* Start searching button */

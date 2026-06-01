@@ -18,21 +18,27 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
     <link href="css/default.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- fuzzy sort -->
+    <script src="https://cdn.jsdelivr.net/npm/fuzzysort@3.1.0/fuzzysort.min.js"></script>
 </head>
 
 <body>
-<div class="shadowed">
+<div class="shadowed" id="vue_app">
     <div class="container-fluid h-100 ml-1 mr-1">
         <header class="border-bottom row background-gradient">
             <h1 class="col-9 float-left"><a href="index.html">Resources</a></h1>
             <span class="col-3 d-flex align-items-center float-end">
 
-                <form id="search" class="row">
+                <form id="search" class="row" onsubmit="javascript:void(0);">
                     <div class="col-8">
-                        <input id="search_text" class="form-control float-end" type="text"/>
+                        <input id="search_text" v-model="search_text" class="form-control float-end" type="text"/>
                     </div>
                     <div class="col-4">
-                        <button class="button-15 float-end" role="button">Search</button>
+                        <button class="button-15 float-end" role="button" @click="trigger_search">Search</button>
                     </div>
                 </form>
             </span>
@@ -44,13 +50,20 @@
             </sidebar>
 
             <main class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 border-left">
-                {body}
+                <div v-html="search_results" id="search_results">
+                    
+                </div>
+                <div id="static_text">
+                    {body}
+                </div>
+               
             </main>
 
         </div>
     </div>
 </div>
 
+<script src="js/vuesearch.js"></script>
 
 </body>
 </html>
