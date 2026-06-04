@@ -1,6 +1,4 @@
-## Python basics
-
-Recap:
+## Python Quick Reference
 
 ```python
 import json
@@ -82,50 +80,3 @@ sum_of_two = lambda a, b: a + b
 print('the sum of', 7, 'and', 4, 'is', sum_of_two(7, 4))
 ```
 
-Output:
-
-> A text message10False
-> 
-> 10
-> 
-> this is true
-> 
-> data length  4
-> 
-> 3
-> 
-> data items:
-> 
-> 1
-> 
-> 2
-> 
-> 3
-> 
-> Something
-> 
-> 1
-> 
-> 2
-> 
-> 3
-> 
-> Something
-> 
-> [2, 3]
-> 
-> the index of 10 is 4
-> 
-> key= firstname , value= Jhon
-> 
-> key= lastname , value= Doe
-> 
-> {"firstname": "Jhon", "lastname": "Doe"}
-> 
-> {'firstname': 'Jhon', 'lastname': 'Doe'}
-> 
-> a is not a text
-> 
-> the sum of 10 and 15 is 25
-> 
-> the sum of 7 and 4 is 11

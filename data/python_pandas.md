@@ -7,7 +7,26 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 ```
+DataFrame
 
+```python
+data = {
+  "calories": [420, 380, 390],
+  "duration": [50, 40, 45]
+}
+
+#load data into a DataFrame object:
+df = pd.DataFrame(data)
+
+#refer to the row index:
+print(df.loc[0])
+
+#Named indexes
+df = pd.DataFrame(data, index = ["day1", "day2", "day3"])
+
+#refer to the named index:
+print(df.loc["day2"])
+```
 Read SQL query result into a dataframe:
 
 ```python
