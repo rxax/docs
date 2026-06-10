@@ -27,3 +27,8 @@
 **Run Django Server**
 
 `python manage.py runserver`
+
+
+**Collect static files**
+
+`python manage.py collectstatic`
