@@ -50,7 +50,7 @@ def markdown_to_html(markdown_text: str) -> str:
     Returns:
         HTML string
     """
-    return markdown.markdown(markdown_text, extensions=['markdown.extensions.fenced_code'])
+    return markdown.markdown(markdown_text, extensions=['tables','markdown.extensions.fenced_code'])
 
 def read_file(file_path):
     """
