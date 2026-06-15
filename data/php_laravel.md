@@ -158,7 +158,7 @@ return view('users', compact('users'));
 In the view:
 ```php
 @foreach($users as $user) 
-<p>{{ $user->name }}</p> 
+<p>{ { $user->name } }</p> 
 @endforeach
 ```
 

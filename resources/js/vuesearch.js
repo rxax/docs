@@ -62,7 +62,7 @@
 
   //Ignore sidebar tag
   app.config.compilerOptions.isCustomElement = (tag) => {
-                return tag === 'sidebar'
+                return tag === 'sidebar' || tag === 'code'
   }
 
   app.mount('#vue_app')

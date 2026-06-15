@@ -1,23 +1,6 @@
 ## PHP Quickstart Guide
 
-**Build tools**
-
-`composer init`
-
-Composer is a dependency manager for PHP. Dependencies are written into `composer.json`:
-
-```json
-{
-    "require": {
-        "monolog/monolog": "2.0.*"
-    }
-}
-```
-Then run `composer install`
-
-**Basic Syntax**
-
-
+###Basic Syntax
 
 Variable declarations
 
@@ -230,3 +213,18 @@ class HomeController {}
 PHP Development server
 
 `php -S localhost:8000`
+
+###Build tools
+
+`composer init`
+
+Composer is a dependency manager for PHP. Dependencies are written into `composer.json`:
+
+```json
+{
+    "require": {
+        "monolog/monolog": "2.0.*"
+    }
+}
+```
+Then run `composer install`
