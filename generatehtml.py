@@ -249,8 +249,9 @@ if __name__ == "__main__":
 
     # read markdown files
     markdown_files = read_all_files("data","*.md")
-
-    sidebar_html = make_sidebar_html(list(markdown_files.keys()))
+    # remove index from sidebar
+    no_index_markdown_files = {k: v for k, v in markdown_files.items() if k != 'index.md'}
+    sidebar_html = make_sidebar_html(list(no_index_markdown_files.keys()))
     #print(sidebar_html)
 
     search_data = []
@@ -283,8 +284,8 @@ if __name__ == "__main__":
                          new_text="const search_data = "+str(search_data)+';')
 
 
-    # write index file
-    index_content =  html_file.replace('{sidebar}',sidebar_html)
-    index_content = index_content.replace('{body}','')
-    write_to_file('htdocs/index.html', index_content)
+    # write index file (no longer needed, we have an index.md)
+    #index_content =  html_file.replace('{sidebar}',sidebar_html)
+    #index_content = index_content.replace('{body}','')
+    #write_to_file('htdocs/index.html', index_content)
 
