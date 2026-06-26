@@ -168,3 +168,56 @@ python manage.py runserver
 
 Visit: `http://127.0.0.1:8000/api/articles/`
 
+
+### Pagination Explained
+
+```python
+class ProductListView(generics.ListAPIView):
+    """List products for the selected organization.
+
+    The catalog page calls this with three filters:
+      - `org`: only show products belonging to this organization
+      - `min_rating`: only show products rated at or above this value
+      - `published_only`: only count published reviews in the rating/count
+    """
+
+    serializer_class = ProductSerializer
+    pagination_class = ResultsSetPagination # This is the pagination class
+    paginate_by = 10
+
+
+    def get_queryset(self):
+
+        queryset = Product.objects.all()
+        # if we have pages
+        if self.request.query_params.get("page"):
+
+            min_rating = self.request.query_params.get("min_rating")
+            if min_rating:
+                return queryset.filter(reviews__rating__gte=min_rating)
+            else:
+                # return without filtering
+                return queryset
+
+
+        # return no data when no page is selected (frontend error scenario)
+        return Product.objects.none()
+```
+
+The pagination class
+
+```python
+class ResultsSetPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+```
+
+Also the changes for `settings.py`
+
+```python
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
+}
+```
