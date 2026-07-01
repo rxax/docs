@@ -1,5 +1,14 @@
 ## Datetime operations
 
+Get a timestamp (good for appending to urls, string record crud dates, etc):
+
+```python
+import calendar
+import time
+gmt = time.gmtime()
+ts = calendar.timegm(gmt) #number
+ts = str(ts) # string
+```
 
 Get the current date and time:
 
