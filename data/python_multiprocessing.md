@@ -28,3 +28,19 @@ out, err = process.communicate()
 
 print((process.returncode, out, err))
 ```
+
+### Python Threads
+
+The threading module provides a way to run multiple threads (smaller units of a process) concurrently within a single process.
+
+```python
+import threading
+# create the thread
+t1 = threading.Thread(target=thread_delay, args=('t1', 1))
+
+# start the thread
+t1.start()
+
+# join all threads (blocks main thread until all threads complete)
+t1.join()
+```
