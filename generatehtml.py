@@ -273,8 +273,12 @@ if __name__ == "__main__":
             'data': remove_tags_and_content(html_sniplet,['pre','code'],True)
         })
 
-
-
+    # clear old files
+    try:
+        clear_folder("htdocs/css")
+        clear_folder("htdocs/js")
+    except:
+        print("Cannot remove htdocs/css or htdocs/js")
     # copy template files
     copy_folder("resources/css", "htdocs/css")
     copy_folder("resources/js", "htdocs/js")

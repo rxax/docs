@@ -48,7 +48,7 @@
                     this.search_results+= '<div class="row">'
 
                     for(result of filtered_results){
-                       this.search_results+=`<p><a href="${result.obj.file}">${result.obj.file}</a>${result.score}</p>`
+                       this.search_results+=`<p><a href="${result.obj.file}">${result.obj.file}</a></p>`
                     }
                     this.search_results+='</div>'
                 }
