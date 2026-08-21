@@ -1,3 +1,5 @@
+![01.png](screenshots/01.png)
+
 # Introduction
 
 This is a personal project developed to generate HTML websites from Markdown documents. It was originally created as a self-study exercise and predates Obsidian, which I currently use as my preferred documentation tool.
@@ -9,12 +11,10 @@ Stack:
 - Vue
 - Fuzzysort
 
-![01.png](screenshots/01.png)
-
 
 # Install/Run instructions
 
-Requires either python or docker. Depending on your running preference.
+Requires either Python or Docker, depending on your preferred execution environment.
 
 # How to start the website
 
