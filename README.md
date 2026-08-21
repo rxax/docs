@@ -1,12 +1,12 @@
-![01.png](screenshots/01.png)
-
 # Introduction
 
 This is a personal project developed to generate HTML websites from Markdown documents. It was originally created as a self-study exercise and predates Obsidian, which I currently use as my preferred documentation tool.
 
+![01.png](screenshots/01.png)
+
 Stack:
 
-- Python
+- Python 3.14
 - JQuery
 - Vue
 - Fuzzysort
