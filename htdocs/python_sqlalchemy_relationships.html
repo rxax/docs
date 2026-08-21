@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,400&family=Outfit:wght@100&display=swap"
+          rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/prism.js"></script>
+    <link href="css/prism.css" type="text/css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <link href="css/default.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- fuzzy sort -->
+    <script src="https://cdn.jsdelivr.net/npm/fuzzysort@3.1.0/fuzzysort.min.js"></script>
+</head>
+
+<body>
+<div class="shadowed" id="vue_app">
+    <div class="container-fluid h-100 ml-1 mr-1">
+        <header class="border-bottom row background-gradient">
+            <h1 class="col-9 float-left"><a href="index.html">Resources</a></h1>
+            <span class="col-3 d-flex align-items-center float-end">
+
+                <form id="search" class="row" onsubmit="javascript:void(0);">
+                    <div class="col-8">
+                        <input id="search_text" v-model="search_text" class="form-control float-end" type="text"/>
+                    </div>
+                    <div class="col-4">
+                        <button class="button-15 float-end" role="button" @click="trigger_search">Search</button>
+                    </div>
+                </form>
+            </span>
+        </header>
+        <div class="row justify-content-left h-100">
+
+            <sidebar class="col-2 hidden-md-down">
+                <ul class="nav nav-list">
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   django
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="django_1_quickstart.html">
+      1 quickstart
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_cors.html">
+      cors
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_er_diagram.html">
+      er diagram
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_model_and_view.html">
+      model and view
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_orm.html">
+      orm
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_relationships.html">
+      relationships
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_rest_quickstart.html">
+      rest quickstart
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   docker
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="docker_flask_uwsgi.html">
+      flask uwsgi
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_httpd.html">
+      httpd
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_logrotate.html">
+      logrotate
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_mariadb.html">
+      mariadb
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_nginx.html">
+      nginx
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_postgres.html">
+      postgres
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_python3.html">
+      python3
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_rabbitmq.html">
+      rabbitmq
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_react_app.html">
+      react app
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_super.html">
+      super
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   flask
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="flask_1_rest_api_quickstart.html">
+      1 rest api quickstart
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_api_key.html">
+      api key
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_before_after.html">
+      before after
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_blueprints.html">
+      blueprints
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_regex_path.html">
+      regex path
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_request_args.html">
+      request args
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_restful.html">
+      restful
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_simple_example.html">
+      simple example
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_view_class.html">
+      view class
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   html
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="html_boilerplate.html">
+      boilerplate
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="html_css_media_queries.html">
+      css media queries
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="html_statis_site.html">
+      statis site
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   java
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="java_1_quick_reference.html">
+      1 quick reference
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_features.html">
+      features
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_oop.html">
+      oop
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_spring.html">
+      spring
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_stream_api.html">
+      stream api
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_threads.html">
+      threads
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   js
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="js_1_quick_reference.html">
+      1 quick reference
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_arrays.html">
+      arrays
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_dom_events.html">
+      dom events
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_fetch.html">
+      fetch
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_jquery.html">
+      jquery
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_jquery_ajax.html">
+      jquery ajax
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_map_reduce_filter_foreach.html">
+      map reduce filter foreach
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_objects.html">
+      objects
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_params.html">
+      params
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_promisses.html">
+      promisses
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_typescript.html">
+      typescript
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_webworker.html">
+      webworker
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_xmlhttprequest.html">
+      xmlhttprequest
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   php
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="php_1_quickstart.html">
+      1 quickstart
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="php_laravel.html">
+      laravel
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   python
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="python_1_quick_reference.html">
+      1 quick reference
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_datetime.html">
+      datetime
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_file_operations.html">
+      file operations
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_jsons.html">
+      jsons
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_logging.html">
+      logging
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_ml_regression_models.html">
+      ml regression models
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_multiprocessing.html">
+      multiprocessing
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pandas.html">
+      pandas
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pathlib.html">
+      pathlib
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_builder.html">
+      pattern builder
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_context.html">
+      pattern context
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_factory.html">
+      pattern factory
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_iterator.html">
+      pattern iterator
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_manager.html">
+      pattern manager
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_mvc.html">
+      pattern mvc
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_object_pool.html">
+      pattern object pool
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_observer.html">
+      pattern observer
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_singleton.html">
+      pattern singleton
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_qr_code.html">
+      qr code
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_readdir.html">
+      readdir
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_requests.html">
+      requests
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_entity.html">
+      sqlalchemy entity
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_entity_timestamp.html">
+      sqlalchemy entity timestamp
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_metadata.html">
+      sqlalchemy metadata
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_orm.html">
+      sqlalchemy orm
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_orm_sql.html">
+      sqlalchemy orm sql
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_raw_sql.html">
+      sqlalchemy raw sql
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_relationships.html">
+      sqlalchemy relationships
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_text_search.html">
+      text search
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_websockets.html">
+      websockets
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   react
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="react_1_quickstart.html">
+      1 quickstart
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_controlled_components.html">
+      controlled components
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_functional_cmp.html">
+      functional cmp
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_reducer.html">
+      reducer
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_router.html">
+      router
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_typescript.html">
+      typescript
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   sys
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="sys_manage_postgresql.html">
+      manage postgresql
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+</ul>
+
+            </sidebar>
+
+            <main class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 border-left">
+                <div v-html="search_results" id="search_results">
+                    
+                </div>
+                <div id="static_text">
+                    <h2>SQLAlchemy Relationships</h2>
+<pre><code class="language-python">import os
+
+from sqlalchemy import create_engine, String, Column, Integer, ForeignKey, Table
+from sqlalchemy.orm import sessionmaker, declarative_base, relationship
+
+Base = declarative_base()
+</code></pre>
+<h3>One-to-One</h3>
+<p>Ex.: One department has One manager, One manager has One department</p>
+<pre><code class="language-python">class Department(Base):
+    __tablename__ = 'departments'
+    id = Column('id', Integer, primary_key=True, autoincrement=True)
+    name = Column('name', String)
+    manager = relationship(&quot;Manager&quot;, back_populates=&quot;department&quot;, uselist=False)
+
+    def __repr__(self):
+        return f&quot;Department({self.id},'{self.name}')&quot;
+
+
+class Manager(Base):
+    __tablename__ = 'managers'
+    id = Column('id', Integer, primary_key=True, autoincrement=True)
+    name = Column('name', String)
+    department_id = Column(Integer, ForeignKey('departments.id'))
+    department = relationship(&quot;Department&quot;, back_populates=&quot;manager&quot;)
+
+    def __repr__(self):
+        return f&quot;Manager({self.id},'{self.name}')&quot;
+</code></pre>
+<h3>One-to-Many</h3>
+<p>Note: the foreign-key is in the child entity.</p>
+<p>Examples:</p>
+<ul>
+<li>One order can have many products.</li>
+<li>One area can be the habitat of many readers.</li>
+<li>One reader can have many subscriptions.</li>
+<li>One newspaper can have many subscriptions.</li>
+</ul>
+<pre><code class="language-python">class Order(Base):
+    __tablename__ = 'orders'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    client_name = Column(String)
+    products = relationship(&quot;Product&quot;, back_populates=&quot;orders&quot;, lazy='joined')
+
+    def __repr__(self):
+        return f&quot;Order({self.id},'{self.client_name}',{self.products})&quot;
+
+
+class Product(Base):
+    __tablename__ = 'products'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String)
+    order_id = Column(Integer, ForeignKey('orders.id'))
+    orders = relationship(&quot;Order&quot;, back_populates=&quot;products&quot;)
+
+    def __repr__(self):
+        return f&quot;Product({self.id},'{self.name}')&quot;
+</code></pre>
+<h3>Many-to-One</h3>
+<p>Note: the foreign-key is in the parent entity.</p>
+<p>Examples:</p>
+<ul>
+<li>Many readers live in one area.</li>
+<li>Many subscriptions can be of one and the same reader.</li>
+<li>Many subscriptions are for one and the same newspaper.</li>
+</ul>
+<pre><code class="language-python">class Subscription(Base):
+    __tablename__ = 'subscriptions'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String)
+    newsletter_id = Column(Integer, ForeignKey('newsletters.id'))
+    newsletter = relationship(&quot;Newsletter&quot;, back_populates=&quot;subscriptions&quot;)
+
+    def __repr__(self):
+        return f&quot;Subscription({self.id},'{self.name}')&quot;
+
+
+class Newsletter(Base):
+    __tablename__ = 'newsletters'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String)
+    subscriptions = relationship(&quot;Subscription&quot;, back_populates=&quot;newsletter&quot;, lazy='joined')
+
+    def __repr__(self):
+        return f&quot;Newsletter({self.id},'{self.name}',{self.subscriptions})&quot;
+</code></pre>
+<h3>Many-to-Many</h3>
+<p>Note: requires an association table.</p>
+<p>Examples:</p>
+<ul>
+<li>many customers are registered to many services</li>
+</ul>
+<pre><code class="language-python">association_table = Table('customer_service', Base.metadata,
+                          Column('customer_id', ForeignKey('customers.id'), primary_key=True),
+                          Column('service_id', ForeignKey('services.id'), primary_key=True)
+                          )
+
+
+class Customer(Base):
+    __tablename__ = 'customers'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String)
+    services = relationship(
+        &quot;Service&quot;,
+        secondary=association_table,
+        back_populates=&quot;customers&quot;,
+        lazy='joined')
+
+    def __repr__(self):
+        return f&quot;Customer({self.id},'{self.name}')&quot;
+
+
+class Service(Base):
+    __tablename__ = 'services'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    customers = relationship(
+        &quot;Customer&quot;,
+        secondary=association_table,
+        back_populates=&quot;services&quot;,
+        lazy='joined')
+
+    def __repr__(self):
+        return f&quot;Services({self.id},'{self.name}')&quot;
+</code></pre>
+<p>Example usage:</p>
+<pre><code class="language-python"># Connect to DB and create tables
+engine = create_engine('sqlite:///' + db_file, connect_args={'check_same_thread': False})
+Base.metadata.create_all(engine, checkfirst=True)
+
+# Create session
+Session = sessionmaker(bind=engine)
+session = Session()
+</code></pre>
+<h3>Testing one-to-one</h3>
+<pre><code class="language-python">department = Department(name='Sales')
+manager = Manager(name='Brown Thomas')
+manager.department = department
+session.add(manager)  # department is saved automatically too
+session.commit()
+session.refresh(manager)
+
+print('one-to-one relationship:')
+print('the department for', manager, 'is', manager.department)
+print('the manager for', department, 'is', department.manager)
+</code></pre>
+<p>Output:</p>
+<blockquote>
+<p>one-to-one relationship:</p>
+<p>the department for Manager(1,'Brown Thomas') is Department(1,'Sales')</p>
+<p>the manager for Department(1,'Sales') is Manager(1,'Brown Thomas')</p>
+</blockquote>
+<h3>Testing one-to-many</h3>
+<pre><code class="language-python">product1 = Product(name='apples')
+product2 = Product(name='oranges')
+product3 = Product(name='lemons')
+order = Order(client_name='Jhon Doe')
+order.products.append(product1)
+order.products.append(product2)
+order.products.append(product3)
+session.add(order)
+session.commit()
+session.refresh(order)
+print('one-to-many relationship')
+print('order with 3 products', order)
+</code></pre>
+<p>Output:</p>
+<blockquote>
+<p>one-to-many relationship </p>
+<p>order with 3 products Order(1,'Jhon Doe',[Product(1,'apples'), Product(2,'oranges'), Product(3,'lemons')])</p>
+</blockquote>
+<h3>Testing many-to-one</h3>
+<pre><code class="language-python">newsletter = Newsletter(name='The Dayly Harold')
+subscription1 = Subscription(name='Anthony Martin')
+subscription2 = Subscription(name='Alex Parker')
+subscription1.newsletter = newsletter
+subscription2.newsletter = newsletter
+session.add(newsletter)
+session.commit()
+session.refresh(newsletter)
+print('many-to-one relationship')
+print('newsletter subscriptions for', newsletter)
+</code></pre>
+<p>Output:</p>
+<blockquote>
+<p>many-to-one relationship </p>
+<p>newsletter subscriptions for Newsletter(1,'The Dayly Harold',[Subscription(1,'Anthony Martin'), Subscription(2,'Alex Parker')])</p>
+</blockquote>
+<h3>Testing many-to-many</h3>
+<pre><code class="language-python">customer1 = Customer(name=&quot;Andrew Bold&quot;)
+customer2 = Customer(name=&quot;John Deere&quot;)
+service1 = Service(name=&quot;JustEat&quot;)
+service2 = Service(name=&quot;Argos&quot;)
+service1.customers.append(customer1)
+service1.customers.append(customer2)
+service2.customers.append(customer1)
+service2.customers.append(customer2)
+session.add(service1)
+session.add(service2)
+session.commit()
+session.refresh(service1)
+session.refresh(service2)
+
+print('many-to-many relationship')
+print('customer1 services', customer1, ':')
+for service in customer1.services:
+    print('-', service)
+
+print('customer2 services', customer2, ':')
+for service in customer1.services:
+    print('-', service)
+
+print('service1 customers', service1, ':')
+for customer in service1.customers:
+    print('-', customer)
+
+print('service2 customers', service2, ':')
+for customer in service2.customers:
+    print('-', customer)
+</code></pre>
+<p>Output:</p>
+<blockquote>
+<p>many-to-many relationship</p>
+<p>customer1 services Customer(1,'Andrew Bold') :</p>
+<ul>
+<li>
+<p>Services(1,'JustEat')</p>
+</li>
+<li>
+<p>Services(2,'Argos')</p>
+</li>
+</ul>
+<p>customer2 services Customer(2,'John Deere') :</p>
+<ul>
+<li>
+<p>Services(1,'JustEat')</p>
+</li>
+<li>
+<p>Services(2,'Argos')</p>
+</li>
+</ul>
+<p>service1 customers Services(1,'JustEat') :</p>
+<ul>
+<li>
+<p>Customer(2,'John Deere')</p>
+</li>
+<li>
+<p>Customer(1,'Andrew Bold')</p>
+</li>
+</ul>
+<p>service2 customers Services(2,'Argos') :</p>
+<ul>
+<li>
+<p>Customer(2,'John Deere')</p>
+</li>
+<li>
+<p>Customer(1,'Andrew Bold')</p>
+</li>
+</ul>
+</blockquote>
+                </div>
+               
+            </main>
+
+        </div>
+    </div>
+</div>
+
+<script src="js/vuesearch.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,400&family=Outfit:wght@100&display=swap"
+          rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/prism.js"></script>
+    <link href="css/prism.css" type="text/css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <link href="css/default.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- fuzzy sort -->
+    <script src="https://cdn.jsdelivr.net/npm/fuzzysort@3.1.0/fuzzysort.min.js"></script>
+</head>
+
+<body>
+<div class="shadowed" id="vue_app">
+    <div class="container-fluid h-100 ml-1 mr-1">
+        <header class="border-bottom row background-gradient">
+            <h1 class="col-9 float-left"><a href="index.html">Resources</a></h1>
+            <span class="col-3 d-flex align-items-center float-end">
+
+                <form id="search" class="row" onsubmit="javascript:void(0);">
+                    <div class="col-8">
+                        <input id="search_text" v-model="search_text" class="form-control float-end" type="text"/>
+                    </div>
+                    <div class="col-4">
+                        <button class="button-15 float-end" role="button" @click="trigger_search">Search</button>
+                    </div>
+                </form>
+            </span>
+        </header>
+        <div class="row justify-content-left h-100">
+
+            <sidebar class="col-2 hidden-md-down">
+                <ul class="nav nav-list">
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   django
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="django_1_quickstart.html">
+      1 quickstart
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_cors.html">
+      cors
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_er_diagram.html">
+      er diagram
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_model_and_view.html">
+      model and view
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_orm.html">
+      orm
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_relationships.html">
+      relationships
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_rest_quickstart.html">
+      rest quickstart
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   docker
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="docker_flask_uwsgi.html">
+      flask uwsgi
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_httpd.html">
+      httpd
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_logrotate.html">
+      logrotate
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_mariadb.html">
+      mariadb
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_nginx.html">
+      nginx
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_postgres.html">
+      postgres
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_python3.html">
+      python3
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_rabbitmq.html">
+      rabbitmq
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_react_app.html">
+      react app
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_super.html">
+      super
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   flask
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="flask_1_rest_api_quickstart.html">
+      1 rest api quickstart
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_api_key.html">
+      api key
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_before_after.html">
+      before after
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_blueprints.html">
+      blueprints
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_regex_path.html">
+      regex path
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_request_args.html">
+      request args
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_restful.html">
+      restful
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_simple_example.html">
+      simple example
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_view_class.html">
+      view class
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   html
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="html_boilerplate.html">
+      boilerplate
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="html_css_media_queries.html">
+      css media queries
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="html_statis_site.html">
+      statis site
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   java
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="java_1_quick_reference.html">
+      1 quick reference
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_features.html">
+      features
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_oop.html">
+      oop
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_spring.html">
+      spring
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_stream_api.html">
+      stream api
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_threads.html">
+      threads
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   js
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="js_1_quick_reference.html">
+      1 quick reference
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_arrays.html">
+      arrays
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_dom_events.html">
+      dom events
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_fetch.html">
+      fetch
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_jquery.html">
+      jquery
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_jquery_ajax.html">
+      jquery ajax
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_map_reduce_filter_foreach.html">
+      map reduce filter foreach
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_objects.html">
+      objects
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_params.html">
+      params
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_promisses.html">
+      promisses
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_typescript.html">
+      typescript
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_webworker.html">
+      webworker
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_xmlhttprequest.html">
+      xmlhttprequest
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   php
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="php_1_quickstart.html">
+      1 quickstart
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="php_laravel.html">
+      laravel
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   python
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="python_1_quick_reference.html">
+      1 quick reference
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_datetime.html">
+      datetime
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_file_operations.html">
+      file operations
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_jsons.html">
+      jsons
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_logging.html">
+      logging
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_ml_regression_models.html">
+      ml regression models
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_multiprocessing.html">
+      multiprocessing
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pandas.html">
+      pandas
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pathlib.html">
+      pathlib
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_builder.html">
+      pattern builder
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_context.html">
+      pattern context
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_factory.html">
+      pattern factory
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_iterator.html">
+      pattern iterator
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_manager.html">
+      pattern manager
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_mvc.html">
+      pattern mvc
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_object_pool.html">
+      pattern object pool
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_observer.html">
+      pattern observer
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_singleton.html">
+      pattern singleton
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_qr_code.html">
+      qr code
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_readdir.html">
+      readdir
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_requests.html">
+      requests
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_entity.html">
+      sqlalchemy entity
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_entity_timestamp.html">
+      sqlalchemy entity timestamp
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_metadata.html">
+      sqlalchemy metadata
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_orm.html">
+      sqlalchemy orm
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_orm_sql.html">
+      sqlalchemy orm sql
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_raw_sql.html">
+      sqlalchemy raw sql
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_relationships.html">
+      sqlalchemy relationships
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_text_search.html">
+      text search
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_websockets.html">
+      websockets
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   react
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="react_1_quickstart.html">
+      1 quickstart
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_controlled_components.html">
+      controlled components
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_functional_cmp.html">
+      functional cmp
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_reducer.html">
+      reducer
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_router.html">
+      router
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_typescript.html">
+      typescript
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   sys
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="sys_manage_postgresql.html">
+      manage postgresql
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+</ul>
+
+            </sidebar>
+
+            <main class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 border-left">
+                <div v-html="search_results" id="search_results">
+                    
+                </div>
+                <div id="static_text">
+                    <h2>Typescript</h2>
+<p>Basic Types</p>
+<pre><code class="language-ts">let name: string = &quot;Alice&quot;;
+let age: number = 30;
+let active: boolean = true;
+let data: any = &quot;anything&quot;;
+
+let id: string | number = 123; // Union type
+</code></pre>
+<p>Arrays</p>
+<pre><code class="language-ts">let nums: number[] = [1, 2, 3];
+
+let names: Array&lt;string&gt; = [&quot;Alice&quot;, &quot;Bob&quot;];
+</code></pre>
+<p>Tuples</p>
+<pre><code class="language-ts">let person: [string, number] = [&quot;Alice&quot;, 30];
+</code></pre>
+<p>Enums</p>
+<pre><code class="language-ts">enum Status {
+  Pending,
+  Active,
+  Completed
+}
+
+let current: Status = Status.Active;
+</code></pre>
+<p>Objects</p>
+<pre><code class="language-ts">let user: {
+  name: string;
+  age: number;
+} = {
+  name: &quot;Alice&quot;,
+  age: 30
+};
+</code></pre>
+<p>Type Aliases</p>
+<pre><code class="language-ts">type User = {
+  id: number;
+  name: string;
+};
+
+const user: User = {
+  id: 1,
+  name: &quot;Alice&quot;
+};
+</code></pre>
+<p>Interfaces</p>
+<pre><code class="language-ts">interface User {
+  id: number;
+  name: string;
+}
+
+const user: User = {
+  id: 1,
+  name: &quot;Alice&quot;
+};
+</code></pre>
+<p>Interface extension</p>
+<pre><code class="language-ts">interface Person {
+  name: string;
+}
+
+interface Employee extends Person {
+  employeeId: number;
+}
+</code></pre>
+<p>Function</p>
+<pre><code class="language-ts">function add(a: number, b: number): number {
+  return a + b;
+}
+
+const multiply = (a: number, b: number): number =&gt; a * b;
+</code></pre>
+<p>Optional parameters</p>
+<pre><code class="language-ts">function greet(name: string, title?: string) {
+  return title ? `${title} ${name}` : name;
+}
+</code></pre>
+<p>Default paramters</p>
+<pre><code class="language-ts">function greet(name: string, title = &quot;Mr.&quot;) {
+  return `${title} ${name}`;
+}
+</code></pre>
+<p>Classes</p>
+<pre><code class="language-ts">class User {
+  constructor(
+    public name: string,
+    private password: string
+  ) {}
+
+  login() {
+    console.log(`${this.name} logged in`);
+  }
+}
+</code></pre>
+<p>Access modifiers</p>
+<pre><code class="language-ts">class Example {
+  public a = 1;
+  protected b = 2;
+  private c = 3;
+}
+</code></pre>
+<p>Generics</p>
+<pre><code class="language-ts">function identity&lt;T&gt;(value: T): T {
+  return value;
+}
+
+const result = identity&lt;string&gt;(&quot;hello&quot;);
+</code></pre>
+<p>Generic Interfaces</p>
+<pre><code class="language-ts">interface ApiResponse&lt;T&gt; {
+  data: T;
+  success: boolean;
+}
+</code></pre>
+<p>Type Assertions</p>
+<pre><code class="language-ts">const input = document.getElementById(&quot;name&quot;) as HTMLInputElement;
+
+const value = (&lt;HTMLInputElement&gt;input).value;
+</code></pre>
+<p>Literal types</p>
+<pre><code class="language-ts">type Direction = &quot;up&quot; | &quot;down&quot; | &quot;left&quot; | &quot;right&quot;;
+
+let move: Direction = &quot;up&quot;;
+</code></pre>
+<p>Optional properties</p>
+<pre><code class="language-ts">interface User {
+  id: number;
+  name?: string;
+}
+</code></pre>
+<p>Readonly properties</p>
+<pre><code class="language-ts">interface User {
+  readonly id: number;
+  name: string;
+}
+</code></pre>
+<h3>Utility types</h3>
+<p><strong><em>Partial</em></strong></p>
+<pre><code class="language-ts">interface User {
+  id: number;
+  name: string;
+}
+
+type UserUpdate = Partial&lt;User&gt;;
+</code></pre>
+<p><strong><em>Pick</em></strong></p>
+<pre><code class="language-ts">type UserPreview = Pick&lt;User, &quot;id&quot; | &quot;name&quot;&gt;;
+</code></pre>
+<p><strong><em>Omit</em></strong></p>
+<pre><code class="language-ts">type UserWithoutId = Omit&lt;User, &quot;id&quot;&gt;;
+</code></pre>
+<p><strong><em>Record</em></strong></p>
+<pre><code class="language-ts">type Scores = Record&lt;string, number&gt;;
+
+const scores: Scores = {
+  alice: 95,
+  bob: 88
+};
+</code></pre>
+<p><strong><em>Async/Await</em></strong></p>
+<pre><code class="language-ts">async function fetchUser(id: number): Promise&lt;User&gt; {
+  const response = await fetch(`/users/${id}`);
+  return response.json();
+}
+</code></pre>
+<p><strong><em>Type Guards</em></strong></p>
+<pre><code class="language-ts">function printId(id: string | number) {
+  if (typeof id === &quot;string&quot;) {
+    console.log(id.toUpperCase());
+  } else {
+    console.log(id.toFixed());
+  }
+}
+</code></pre>
+<p><strong><em>Null safety</em></strong></p>
+<pre><code class="language-ts">let value: string | null = null;
+
+value?.toUpperCase(); // Optional chaining
+
+const result = value ?? &quot;default&quot;; // Nullish coalescing
+</code></pre>
+<h3>Modules</h3>
+<p>Export</p>
+<pre><code class="language-ts">export function add(a: number, b: number) {
+  return a + b;
+}
+
+export default class User {}
+</code></pre>
+<p>Import</p>
+<pre><code class="language-ts">import User from &quot;./User&quot;;
+import { add } from &quot;./math&quot;;
+</code></pre>
+<h3>Common Patterns</h3>
+<p>Discriminated Union</p>
+<pre><code class="language-ts">type Success = {
+  status: &quot;success&quot;;
+  data: string;
+};
+
+type Error = {
+  status: &quot;error&quot;;
+  message: string;
+};
+
+type Result = Success | Error;
+
+function handle(result: Result) {
+  if (result.status === &quot;success&quot;) {
+    console.log(result.data);
+  } else {
+    console.log(result.message);
+  }
+}
+</code></pre>
+<p>Generic API Response</p>
+<pre><code class="language-ts">type ApiResponse&lt;T&gt; = {
+  success: boolean;
+  data: T;
+  error?: string;
+};
+</code></pre>
+<p>Useful Compiler Flags</p>
+<pre><code class="language-json">{
+  &quot;compilerOptions&quot;: {
+    &quot;strict&quot;: true,
+    &quot;noImplicitAny&quot;: true,
+    &quot;strictNullChecks&quot;: true,
+    &quot;target&quot;: &quot;ES2022&quot;,
+    &quot;module&quot;: &quot;NodeNext&quot;
+  }
+}
+</code></pre>
+<p>Most Common Syntax</p>
+<pre><code class="language-ts">type User = {
+  id: number;
+  name: string;
+};
+
+async function getUser(id: number): Promise&lt;User&gt; {
+  return { id, name: &quot;Alice&quot; };
+}
+
+const user = await getUser(1);
+console.log(user.name);
+</code></pre>
+                </div>
+               
+            </main>
+
+        </div>
+    </div>
+</div>
+
+<script src="js/vuesearch.js"></script>
+
+</body>
+</html>

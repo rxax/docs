@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100&family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,400&family=Outfit:wght@100&display=swap"
+          rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/prism.js"></script>
+    <link href="css/prism.css" type="text/css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+    <link href="css/default.css" type="text/css" rel="stylesheet"/>
+
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- fuzzy sort -->
+    <script src="https://cdn.jsdelivr.net/npm/fuzzysort@3.1.0/fuzzysort.min.js"></script>
+</head>
+
+<body>
+<div class="shadowed" id="vue_app">
+    <div class="container-fluid h-100 ml-1 mr-1">
+        <header class="border-bottom row background-gradient">
+            <h1 class="col-9 float-left"><a href="index.html">Resources</a></h1>
+            <span class="col-3 d-flex align-items-center float-end">
+
+                <form id="search" class="row" onsubmit="javascript:void(0);">
+                    <div class="col-8">
+                        <input id="search_text" v-model="search_text" class="form-control float-end" type="text"/>
+                    </div>
+                    <div class="col-4">
+                        <button class="button-15 float-end" role="button" @click="trigger_search">Search</button>
+                    </div>
+                </form>
+            </span>
+        </header>
+        <div class="row justify-content-left h-100">
+
+            <sidebar class="col-2 hidden-md-down">
+                <ul class="nav nav-list">
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   django
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="django_1_quickstart.html">
+      1 quickstart
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_cors.html">
+      cors
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_er_diagram.html">
+      er diagram
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_model_and_view.html">
+      model and view
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_orm.html">
+      orm
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_relationships.html">
+      relationships
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="django_rest_quickstart.html">
+      rest quickstart
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   docker
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="docker_flask_uwsgi.html">
+      flask uwsgi
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_httpd.html">
+      httpd
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_logrotate.html">
+      logrotate
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_mariadb.html">
+      mariadb
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_nginx.html">
+      nginx
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_postgres.html">
+      postgres
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_python3.html">
+      python3
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_rabbitmq.html">
+      rabbitmq
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_react_app.html">
+      react app
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="docker_super.html">
+      super
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   flask
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="flask_1_rest_api_quickstart.html">
+      1 rest api quickstart
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_api_key.html">
+      api key
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_before_after.html">
+      before after
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_blueprints.html">
+      blueprints
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_regex_path.html">
+      regex path
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_request_args.html">
+      request args
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_restful.html">
+      restful
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_simple_example.html">
+      simple example
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="flask_view_class.html">
+      view class
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   html
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="html_boilerplate.html">
+      boilerplate
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="html_css_media_queries.html">
+      css media queries
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="html_statis_site.html">
+      statis site
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   java
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="java_1_quick_reference.html">
+      1 quick reference
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_features.html">
+      features
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_oop.html">
+      oop
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_spring.html">
+      spring
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_stream_api.html">
+      stream api
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="java_threads.html">
+      threads
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   js
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="js_1_quick_reference.html">
+      1 quick reference
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_arrays.html">
+      arrays
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_dom_events.html">
+      dom events
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_fetch.html">
+      fetch
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_jquery.html">
+      jquery
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_jquery_ajax.html">
+      jquery ajax
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_map_reduce_filter_foreach.html">
+      map reduce filter foreach
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_objects.html">
+      objects
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_params.html">
+      params
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_promisses.html">
+      promisses
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_typescript.html">
+      typescript
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_webworker.html">
+      webworker
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="js_xmlhttprequest.html">
+      xmlhttprequest
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   php
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="php_1_quickstart.html">
+      1 quickstart
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="php_laravel.html">
+      laravel
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   python
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="python_1_quick_reference.html">
+      1 quick reference
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_datetime.html">
+      datetime
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_file_operations.html">
+      file operations
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_jsons.html">
+      jsons
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_logging.html">
+      logging
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_ml_regression_models.html">
+      ml regression models
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_multiprocessing.html">
+      multiprocessing
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pandas.html">
+      pandas
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pathlib.html">
+      pathlib
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_builder.html">
+      pattern builder
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_context.html">
+      pattern context
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_factory.html">
+      pattern factory
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_iterator.html">
+      pattern iterator
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_manager.html">
+      pattern manager
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_mvc.html">
+      pattern mvc
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_object_pool.html">
+      pattern object pool
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_observer.html">
+      pattern observer
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_pattern_singleton.html">
+      pattern singleton
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_qr_code.html">
+      qr code
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_readdir.html">
+      readdir
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_requests.html">
+      requests
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_entity.html">
+      sqlalchemy entity
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_entity_timestamp.html">
+      sqlalchemy entity timestamp
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_metadata.html">
+      sqlalchemy metadata
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_orm.html">
+      sqlalchemy orm
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_orm_sql.html">
+      sqlalchemy orm sql
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_raw_sql.html">
+      sqlalchemy raw sql
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_sqlalchemy_relationships.html">
+      sqlalchemy relationships
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_text_search.html">
+      text search
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="python_websockets.html">
+      websockets
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   react
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="react_1_quickstart.html">
+      1 quickstart
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_controlled_components.html">
+      controlled components
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_functional_cmp.html">
+      functional cmp
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_reducer.html">
+      reducer
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_router.html">
+      router
+     </a>
+    </li>
+    <li class="col-12">
+     <a class="page" href="react_typescript.html">
+      typescript
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+ <ul class="col-12">
+  <label class="tree-toggler nav-header category">
+   sys
+  </label>
+  <ul class="nav nav-list tree">
+   <li class="col-12">
+    <li class="col-12">
+     <a class="page" href="sys_manage_postgresql.html">
+      manage postgresql
+     </a>
+    </li>
+   </li>
+  </ul>
+ </ul>
+</ul>
+
+            </sidebar>
+
+            <main class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 border-left">
+                <div v-html="search_results" id="search_results">
+                    
+                </div>
+                <div id="static_text">
+                    <h2>PHP Quickstart Guide</h2>
+<h3>Basic Syntax</h3>
+<p>Variable declarations</p>
+<pre><code class="language-php">$name = &quot;John&quot;;
+$age = 25;
+</code></pre>
+<p>Super-globals</p>
+<p><code>$_GET, $_POST, $_REQUEST, $_SERVER, $_SESSION, $_COOKIE, $_FILES</code></p>
+<p>Constants</p>
+<pre><code class="language-php">define(&quot;SITE_NAME&quot;, &quot;My Website&quot;);
+</code></pre>
+<p>Conditional operations</p>
+<pre><code class="language-php">if ($age &gt;= 18) {
+        echo &quot;Adult&quot;;
+    } else {
+        echo &quot;Minor&quot;;
+    }
+</code></pre>
+<p>Loops</p>
+<pre><code class="language-php"># standard for loop
+for ($i = 1; $i &lt;= 5; $i++) {
+    echo $i;
+}
+
+# enhanced for
+foreach ($colors as $color) {
+    echo $color;
+}
+</code></pre>
+<p>Arrays</p>
+<p>One-dimensional Arrays</p>
+<pre><code class="language-php">$fruits = [&quot;Apple&quot;, &quot;Banana&quot;];
+</code></pre>
+<p>Multi-dimensional Arrays</p>
+<pre><code class="language-php">  $name[0][0] = 'Claudia Mustermann';
+  $name[0][1] = 'info@mustermann.de';
+
+  $name[1][0] = 'Dieter Hinz';
+  $name[1][1] = 'dieter.hinz@wasweissich.de';
+
+  $name[2][0] = 'Peter Kunz';
+  $name[2][1] = 'peter@kunz.de';
+</code></pre>
+<p>Associative arrays</p>
+<pre><code class="language-php">  $adresse['name']   = 'Claudia Mustermann';
+  $adresse['straße'] = 'Musterstraße 0';
+  $adresse['plz']    = '00000';
+  $adresse['ort']    = 'Musterstadt';
+  $adresse['mail']   = 'info@mustermann.de';
+
+  $user = [&quot;name&quot;=&gt;&quot;John&quot;,&quot;age&quot;=&gt;25];
+</code></pre>
+<p>Functions</p>
+<pre><code class="language-php">function greet($name) {
+    return &quot;Hello, $name&quot;;
+}
+</code></pre>
+<p>Form Handling</p>
+<pre><code class="language-php">if ($_SERVER[&quot;REQUEST_METHOD&quot;] === &quot;POST&quot;) {
+    echo $_POST[&quot;username&quot;];
+}
+</code></pre>
+<p>File Operations</p>
+<pre><code class="language-php">file_put_contents(&quot;data.txt&quot;, &quot;Hello&quot;);
+
+$content = file_get_contents(&quot;data.txt&quot;);
+</code></pre>
+<h2>OOP with PHP</h2>
+<p>Class definition and instance creation</p>
+<pre><code class="language-php">class User {
+ // Public property
+    public string $name;
+
+    // Private property
+    private int $age;
+
+    // Static property (shared by all instances)
+    private static int $userCount = 0;
+
+    // Constructor
+    public function __construct(string $name, int $age)
+    {
+        $this-&gt;name = $name;
+        $this-&gt;age = $age;
+
+        self::$userCount++;
+    }
+
+    // Public method
+    public function getProfile(): string
+    {
+        return $this-&gt;formatProfile();
+    }
+
+    // Public method
+    public function setAge(int $age): void
+    {
+        if ($age &gt; 0) {
+            $this-&gt;age = $age;
+        }
+    }
+
+    // Public method
+    public function getAge(): int
+    {
+        return $this-&gt;age;
+    }
+
+    // Private method
+    private function formatProfile(): string
+    {
+        return &quot;Name: {$this-&gt;name}, Age: {$this-&gt;age}&quot;;
+    }
+
+    // Static method
+    public static function getUserCount(): int
+    {
+        return self::$userCount;
+    }
+}
+</code></pre>
+<p>Usage:</p>
+<pre><code class="language-php">// Create objects
+$user1 = new User(&quot;John&quot;, 25);
+$user2 = new User(&quot;Jane&quot;, 30);
+
+// Access public property
+echo $user1-&gt;name . PHP_EOL;
+
+// Call public method
+echo $user1-&gt;getProfile() . PHP_EOL;
+
+// Call static method
+echo &quot;Total users: &quot; . User::getUserCount() . PHP_EOL;
+</code></pre>
+<p>Database access</p>
+<pre><code class="language-php">$pdo = new PDO(&quot;mysql:host=localhost;dbname=test&quot;,&quot;root&quot;,&quot;password&quot;);
+$pdo-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$pdo-&gt;prepare('SELECT name, colour, calories FROM fruit WHERE calories &lt; :calories AND colour = :colour');
+$pdo-&gt;bindParam(':calories', $calories);
+$pdo-&gt;bindParam(':colour', $colour);
+$pdo-&gt;execute();
+
+$users = $pdo-&gt;fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($users as $user) {
+        echo $user['name'] . &quot;&lt;br&gt;&quot;;
+    }
+</code></pre>
+<p>Exception handling</p>
+<pre><code class="language-php">try {
+    throw new Exception(&quot;Error&quot;);
+} catch (Exception $e) {
+    echo $e-&gt;getMessage();
+}
+</code></pre>
+<p>Namespaces</p>
+<pre><code class="language-php">namespace App\Controllers;
+class HomeController {}
+</code></pre>
+<p>PHP Development server</p>
+<p><code>php -S localhost:8000</code></p>
+<h3>Build tools</h3>
+<p><code>composer init</code></p>
+<p>Composer is a dependency manager for PHP. Dependencies are written into <code>composer.json</code>:</p>
+<pre><code class="language-json">{
+    &quot;require&quot;: {
+        &quot;monolog/monolog&quot;: &quot;2.0.*&quot;
+    }
+}
+</code></pre>
+<p>Then run <code>composer install</code></p>
+                </div>
+               
+            </main>
+
+        </div>
+    </div>
+</div>
+
+<script src="js/vuesearch.js"></script>
+
+</body>
+</html>
